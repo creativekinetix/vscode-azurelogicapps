@@ -1,6 +1,6 @@
 import { ResourceManagementClient } from "azure-arm-resource";
 import { ResourceGroupListStep as ResourceGroupListStepParent, IAzureNamingRules } from "vscode-azureextensionui";
-import { IWizardResourceGroupWizardContext } from '../../models/wizard/wizard';
+import { IWizardResourceGroupWizardContext } from "../models/wizard/wizard";
 
 
 export const resourceGroupNamingRules: IAzureNamingRules = {
@@ -11,14 +11,7 @@ export const resourceGroupNamingRules: IAzureNamingRules = {
 
 
 export class ResourceGroupListStep extends ResourceGroupListStepParent<IWizardResourceGroupWizardContext> {
-    private _suppressCreate: boolean | undefined;
-
-    public constructor(suppressCreate?: boolean) {
-        super();
-        this._suppressCreate = suppressCreate;
-    }
-
-
+    
     public static async getResourceGroups<T extends IWizardResourceGroupWizardContext>(wizardContext: T) {
         
         if(wizardContext.resourceGroupsTask === undefined) {
@@ -37,7 +30,7 @@ export namespace uiUtils {
         nextLink?: string;
     }
 
-    export async function listAll<T>(client: { listNext(nextPageLink: string): Promise<IPartialList<T>>; }, first: Promise<IPartialList<T>>): Promise<T[]> {
+    export async function listAll<T>(client: { listNext(nextPageLink: string): Promise<IPartialList<T>> }, first: Promise<IPartialList<T>>): Promise<T[]> {
         const all: T[] = [];
 
         let list: IPartialList<T> = await first;

@@ -9,3 +9,9 @@ export interface IWizardCredentials extends ServiceClientCredentials {
 export interface IWizardContext extends ILocationWizardContext, IResourceGroupWizardContext {
     credentials: IWizardCredentials;
 }
+
+
+export interface IWizardResourceGroupWizardContext extends IWizardContext, IResourceGroupWizardContext {
+    version?: string;
+    credentials: IWizardCredentials;
+}

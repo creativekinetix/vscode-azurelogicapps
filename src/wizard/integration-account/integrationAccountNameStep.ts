@@ -52,7 +52,7 @@ export class IntegrationAccountNameStep extends AzureWizardPromptStep<IIntegrati
             resourceGroupName = wizardContext.resourceGroup!.name!;
         }
 
-        const client = new LogicAppsManagementClient(wizardContext.credentials, wizardContext.subscriptionId, wizardContext.credentials.environment?.resourceManagerEndpointUrl);
+        const client = new LogicAppsManagementClient(wizardContext.credentials, wizardContext.subscriptionId);
         addExtensionUserAgent(client);
 
         let integrationAccounts = await client.integrationAccounts.listByResourceGroup(resourceGroupName);

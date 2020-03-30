@@ -12,7 +12,7 @@ import { IMapWizardContext } from "./createMapWizard";
 
 export class MapCreateStep extends AzureWizardExecuteStep<IMapWizardContext> {
     public async execute(wizardContext: IMapWizardContext): Promise<IMapWizardContext> {
-        const client = new LogicAppsManagementClient(wizardContext.credentials, wizardContext.subscriptionId, wizardContext.credentials.environment?.resourceManagerEndpointUrl);
+        const client = new LogicAppsManagementClient(wizardContext.credentials, wizardContext.subscriptionId);
         addExtensionUserAgent(client);
 
         const newMap: IntegrationAccountMap = await client.integrationAccountMaps.createOrUpdate(wizardContext.resourceGroup!.name!,

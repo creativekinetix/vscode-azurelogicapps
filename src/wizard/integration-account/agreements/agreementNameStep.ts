@@ -41,7 +41,7 @@ export class AgreementNameStep extends AzureWizardPromptStep<IAgreementWizardCon
     }
 
     private async isNameAvailable(name: string, wizardContext: IAgreementWizardContext): Promise<boolean> {
-        const client = new LogicAppsManagementClient(wizardContext.credentials, wizardContext.subscriptionId, wizardContext.credentials.environment?.resourceManagerEndpointUrl);
+        const client = new LogicAppsManagementClient(wizardContext.credentials, wizardContext.subscriptionId);
         addExtensionUserAgent(client);
 
         let agreements = await client.integrationAccountAgreements.list(wizardContext.resourceGroup!.name!, wizardContext.integrationAccountName);

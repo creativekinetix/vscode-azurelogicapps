@@ -12,6 +12,7 @@ export interface IWizardContext extends ILocationWizardContext, IResourceGroupWi
 
 
 export interface IWizardResourceGroupWizardContext extends IWizardContext, IResourceGroupWizardContext {
+    _alreadyHasLocationStep: boolean | undefined;
     version?: string;
     credentials: IWizardCredentials;
 }

@@ -44,7 +44,10 @@ const config = {
     resolve: {
         extensions: [".ts", ".js"]
     },
-    target: "node"
+    target: "node",
+    optimization: {
+        minimize: false
+    }
 };
 
 module.exports = config;
